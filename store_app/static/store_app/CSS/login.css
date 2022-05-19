@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Class for reusable background color */
+.brown {
+    background-color: #372020;
+}
+
+/* ############### Navbar styles ############### */
+
+#menu-button {
+    background-color: transparent;
+    border: none;
+}
+
+.nav-item {
+    border-bottom: 2px solid transparent;
+}
+
+.nav-item:hover {
+    color: #ffe4c4;
+    border-bottom: 2px solid #ffe4c4;
+    transition: ease-in-out 450ms;
+}
+
+/* ############### Main styles ############### */
+
+#main {
+    background: linear-gradient(0deg,#b18c5f 10%, #ffe4c4 80%);
+    background-color: #ffe4c4;
+    height: 100vh;
+}
+
+
+/* ############### Form styles ############### */
+
+#login-form {
+    border: 2px solid #372020;
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+}
+
+.text-input {
+    color: #372020;
+}
+
+.text-input:hover {
+    border-color: #777;
+}
+
+.text-input:focus {
+    border-color: #372020;
+    box-shadow: none;
+}
+
+.button {
+    color: #fff;
+    background-color: #372020;
+}
+
+.button:hover {
+    color: #372020;
+    background-color: #DADADA;
+}
+
+a {
+    font-weight: bolder;
+    color: #372020;
+}

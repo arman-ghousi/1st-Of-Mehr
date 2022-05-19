@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Class for reusable background color */
+.brown {
+    background-color: #372020;
+}
+
+/* ############### Navbar styles ############### */
+
+#menu-button {
+    background-color: transparent;
+    border: none;
+}
+
+.nav-item {
+    border-bottom: 2px solid transparent;
+}
+
+.nav-item:hover {
+    color: #ffe4c4;
+    border-bottom: 2px solid #ffe4c4;
+    transition: ease-in-out 450ms;
+}
+
+/* ############### Banner styles ############### */
+
+#banner {
+    width: 100%;
+    height: 45vh;
+    /* background-image: url("../Images/klim-musalimov-C4PrbUyYxaY-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+    background-color: #DADADA;
+}
+
+.text-input {
+    color: #372020;
+}
+
+.text-input:hover {
+    border-color: #777;
+}
+
+.text-input:focus {
+    border-color: #372020;
+    box-shadow: none;
+}
+
+.button {
+    color: #fff;
+    background-color: #372020;
+}
+
+.button:hover {
+    color: #372020;
+    background-color: #ffe4c4;
+}
+
+/* ############### Description styles ############### */
+
+#description {
+    height: 95vh;
+    text-align: center;
+}
+
+.box {
+    width: 10em;
+    padding: 5px;
+    border: 3px solid #ffe4c4;
+    box-shadow: 0 0 7px 0 #ffe4c4;
+}
+
+/* ############### Testimonial styles ############### */
+
+#testimonials {
+    height: 50vh;
+    color: #372020;
+    background-color: #DADADA;
+}
+
+.testimonial {
+    text-align: center;
+}
+
+/* ############### Contacts styles ############### */
+
+#contacts {
+    color: #DADADA;
+    height: 15vh;
+}
+
+
+/* Resize images to be responsive */
+@media (min-width: 1025px) {
+    .box {
+        width: 21em;
+    }
+}

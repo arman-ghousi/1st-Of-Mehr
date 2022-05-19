@@ -1,0 +1,59 @@
+{% extends "store_app/layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    Search results for {{ query }}
+{% endblock %}
+
+{% block style %}
+    {% static "store_app/CSS/search.css" %}
+{% endblock %}
+
+{% block script %}
+    {% static "store_app/JS/search.js" %}
+{% endblock %}
+
+
+
+{% block body %}
+
+    <!-- ***************** Search section ***************** -->
+    <section id="search-section">
+        <div class="d-flex flex-row justify-content-start align-items-center">
+            <h2 class="p-3 mt-5 title">Search results for: {{ query }}</h2>
+        </div>
+        <section id="products-display" class="container w-75 p-5">
+            <div class="row">
+                {% for result in results %}
+                    <div class="product col-12 col-md-6 col-lg-4 col-xl-3 p-4" onclick="window.location = `{% url 'product' result.id %}`">
+                        <img class="img-fluid border border-light" src="{{ result.image.url }}" alt="{{ result.name }}">
+                        <div class="product-description d-flex flex-column justify-content-center align-items-center p-1">
+                            <p class="m-0 p-1 fs-5">{{ result.name }}</p>
+                            <p class="m-0">${{ result.price }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <nav>
+            <!-- ***************** Pagination section ***************** -->
+            <ul class="pagination justify-content-center">
+                {% if results.has_previous %}
+                    <li class="page-item"><a class="page-link title" href="?page={{ results.previous_page_number }}">Previous</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link title" href="#">Previous</a></li>
+                {% endif %}
+
+                <li class="page-item"><a class="page-link title">Page {{ results.number }} of {{ results.paginator.num_pages }}</a></li>
+                
+                {% if results.has_next %}
+                    <li class="page-item"><a class="page-link title" href="?page={{ results.next_page_number }}">Next</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link title" href="#">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </section>
+
+{% endblock %}

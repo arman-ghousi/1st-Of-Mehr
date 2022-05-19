@@ -1,0 +1,48 @@
+{% extends "store_app/layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    1st of Mehr | {{ product.name }}
+{% endblock %}
+
+{% block style %}
+    {% static "store_app/CSS/product.css" %}
+{% endblock %}
+
+{% block script %}
+    {% static "store_app/JS/product.js" %}
+{% endblock %}
+
+
+
+{% block body %}
+
+    <!-- ***************** Product section ***************** -->
+    <section id="product-page" class="d-flex flex-column justify-content-center">
+        {% if message %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+        <div id="product-section" class="p-5 h-75 row">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 m-2 h-100">
+                <img id="product-image" class="img-fluid rounded-3 h-100" src="{{ product.image.url }}" alt="placeholder">
+            </div>
+            <div class="col-7 d-flex flex-column justify-content-evenly align-items-start title">
+                <h3>{{ product.name | title }}</h3>
+                <h3 class="fs-5">{{ product.description }}</h3>
+                <h3>Price: ${{ product.price }}</h3>
+                <h3>{{ product.availability }} in stock</h3>
+                <h3 class="d-flex flex-row">
+                    <form action="{% url 'add' product.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="m-1" type="number" name="quantity" min="1" max="{{ product.availability }}">
+                        <button type="submit" class="btn btn-dark m-1 p-2"><i class="bi bi-cart-fill"></i> Add to cart</button>
+                    </form>
+                </h3>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

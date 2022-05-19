@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #DADADA;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #372020;
+}
+
+body {
+    background-color: #DADADA;
+}
+
+/* Class for reusable background color */
+.brown {
+    background-color: #372020;
+}
+
+.title {
+    color: #372020;
+}
+
+.border-brown {
+    border: 2px solid #372020;
+}
+
+/* ############### Checkout styles ############### */
+
+#checkout {
+    height: 100vh;
+}
+
+#checkout-form {
+    background-color: #99808074;
+    border: 2px solid #372020;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #372020;
+}

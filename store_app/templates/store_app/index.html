@@ -1,0 +1,110 @@
+{% extends "store_app/layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    1st of Mehr
+{% endblock %}
+
+{% block style %}
+    {% static "store_app/CSS/index.css" %}
+{% endblock %}
+
+{% block script %}
+    {% static "store_app/JS/index.js" %}
+{% endblock %}
+
+
+
+{% block body %}
+
+    <section>
+        <!-- ***************** Banner section ***************** -->
+        <section id="banner" class="d-flex flex-column justify-content-around align-items-center">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <h1 class="text-center title">Welcome to 1st of Mehr</h1>
+                <h2 class="text-center title">A Place for office tools</h2>
+            </div>
+            <div>
+                <form class="d-flex justify-content-center align-items-center" action="{% url 'search' %}">
+                    <div class="m-1">
+                        <input class="form-control text-input" type="text" name="query" placeholder="Search for products...">
+                    </div>
+                    <div class="m-1">
+                        <input class="form-control button" type="submit" value="Search">
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- ***************** Description section ***************** -->
+        <section id="description" class="container-fluid d-flex flex-column justify-content-center align-items-center brown">
+            <div class="d-sm-flex flex-sm-column justify-content-sm-center align-items-sm-center d-md-flex flex-md-row justify-content-md-around align-items-md-center m-3">
+                <div class="w-sm-100 w-md-50 d-flex justify-content-center align-items-center">
+                    <img class="img-fluid box" src="{% static 'store_app/Images/color-pencil-2-1426407.jpg' %}" alt="pencils">
+                </div>
+                <div class="w-sm-100 w-md-50 d-flex justify-content-center align-items-center  mt-3 m-md-5">
+                    <h3 class="text-light">Find what you need, when you need it.</h3>
+                </div>
+            </div>
+            <div class="d-sm-flex flex-sm-column justify-content-sm-center align-items-sm-center d-md-flex flex-md-row-reverse justify-content-md-around align-items-md-center m-3">
+                <div class="w-sm-100 w-md-50 d-flex justify-content-center align-items-center">
+                    <img class="img-fluid box" src="{% static 'store_app/Images/bookblock-JPHPdqZrB3I-unsplash.jpg' %}" alt="notebook">
+                </div>
+                <div class="w-sm-100 w-md-50 d-flex justify-content-center align-items-center  mt-3 m-md-5">
+                    <h3 class="text-light">Get inspired by beauty.</h3>
+                </div>
+            </div>
+            <div class="d-sm-flex flex-sm-column justify-content-sm-center align-items-sm-center d-md-flex flex-md-row justify-content-md-around align-items-md-center m-3">
+                <div class="w-sm-100 w-md-50 d-flex justify-content-center align-items-center">
+                    <img class="img-fluid box" src="{% static 'store_app/Images/slava-keyzman-ZG4Y6lLPARw-unsplash.jpg' %}" alt="workspace">
+                </div>
+                <div class="w-sm-100 w-md-50 d-flex justify-content-center align-items-center mt-3 m-md-5">
+                    <h3 class="text-light">Make your workspace a safe haven.</h3>
+                </div>
+            </div>
+        </section>
+        <!-- ***************** Testimonials section ***************** -->
+        <section id="testimonials" class="container-fluid d-flex flex-column justify-content-center align-items-center w-100">
+            <!-- Testimonials title -->
+            <div class="d-flex flex-row justify-content-center align-items-center mb-5">
+                <h2 class="text-center">Hear from some of our customers</h2>
+            </div>
+            <!-- Customer testimonials -->
+            <div class="carousel slide" data-bs-ride="carousel">
+                <div id="inner" class="carousel-inner">
+                    {% for testimonial in testimonials %}
+                        {% if forloop.first %}
+                        <div class="carousel-item active">
+                        {% else %}
+                        <div class="carousel-item">
+                        {% endif %}
+                            <div class="d-flex flex-row justify-content-center align-items-center d-block w-100">
+                                <h4 class="testimonial"><i class="bi bi-quote" style="font-size: 1.5em;"></i> {{ testimonial.testimonial }}</h4>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- ***************** Contacts section ***************** -->
+        <footer id="contacts" class="container-fluid d-flex flex-column justify-content-center align-items-center brown">
+            <!-- Contacts title -->
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <h2 class="text-center">Contact us</h2>
+            </div>
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <!-- E-mail link -->
+                <div class="m-2"><i class="bi bi-envelope" style="font-size: 2.5em;" title="Send us an E-mail"></i></div>
+                <!-- Instagram link -->
+                <div class="m-2"><i class="bi bi-instagram" style="font-size: 2.5em;" title="Follow us on instagram"></i></div>
+                <!-- Telegram link -->
+                <div class="m-2"><i class="bi bi-telegram" style="font-size: 2.5em;" title="Join our Telegram channel"></i></div>
+                <!-- Facebook link -->
+                <div class="m-2"><i class="bi bi-facebook" style="font-size: 2.5em;" title="Check out our page on Facebook"></i></div>
+                <!-- Linkedin link -->
+                <div class="m-2"><i class="bi bi-linkedin" style="font-size: 2.5em;" title="Connect with us on Linkedin"></i></div>
+            </div>
+        </footer>
+    </section>
+
+{% endblock %}

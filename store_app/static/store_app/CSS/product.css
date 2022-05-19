@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #DADADA;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #372020;
+}
+
+body {
+    background-color: #DADADA;
+}
+
+/* Class for reusable background color */
+.brown {
+    background-color: #372020;
+}
+
+.title {
+    color: #372020;
+}
+
+.border-brown {
+    border: 2px solid #372020;
+}
+
+/* ############### Navbar styles ############### */
+
+#menu-button {
+    background-color: transparent;
+    border: none;
+}
+
+.nav-item {
+    border-bottom: 2px solid transparent;
+}
+
+.nav-item:hover {
+    color: #ffe4c4;
+    border-bottom: 2px solid #ffe4c4;
+    transition: ease-in-out 450ms;
+}
+
+/* ############### Product section styles ############### */
+
+#product-page {
+    height: 80vh;
+}
+
+#product-section {
+    padding: 50px;
+    box-shadow: 0 0 15px 0 #372020;
+}
+
+#product-image {
+    box-shadow: 0 0 15px 0 #372020;
+}

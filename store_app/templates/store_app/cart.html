@@ -1,0 +1,63 @@
+{% extends "store_app/layout.html" %}
+
+{% load static %}
+
+{% load multiply %}
+
+{% block title %}
+    1st of Mehr | Cart
+{% endblock %}
+
+{% block style %}
+    {% static "store_app/CSS/cart.css" %}
+{% endblock %}
+
+{% block script %}
+    {% static "store_app/JS/cart.js" %}
+{% endblock %}
+
+
+
+{% block body %}
+
+    <!-- ***************** Cart section ***************** -->
+    <section id="cart-section" class="container-fluid d-flex flex-column justify-content-center align-items-center my-5 w-100">
+        <h2>Your Cart</h2>
+        <div class="table-responsive w-100 p-1 m-2">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Per unit</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in cart %}
+                        <tr>
+                            <td>{{ object.cart_product.name }}</td>
+                            <td>${{ object.cart_product.price }}</td>
+                            <td class="qty"><input class="qty-value form-control w-50 p-1" type="number" min="0" max="{{ object.cart_product.availability }}" value="{{ object.quantity }}"></td>
+                            <td class="price">${{ object.cart_product.price|multiply:object.quantity }}</td>
+                            <td>
+                                <form action="{% url 'remove' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="number" name="id" value="{{ object.cart_product.id }}" hidden>
+                                    <input class="btn btn-danger" type="submit" value="Remove">
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr class="table-active">
+                        <td class="text-center" colspan="3"><strong>Total</strong></td>
+                        <td colspan="2"><strong id="total"></strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a class="btn btn-success" href="{% url 'checkout' %}">Proceed to checkout</a>
+    </section>
+
+{% endblock %}

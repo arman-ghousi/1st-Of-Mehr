@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #DADADA;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #372020;
+}
+
+body {
+    background-color: #DADADA;
+}
+
+/* Class for reusable background color */
+.brown {
+    background-color: #372020;
+}
+
+.title {
+    color: #372020;
+}
+
+.border-brown {
+    border: 1px solid #372020;
+}
+
+/* ############### Navbar styles ############### */
+
+#menu-button {
+    background-color: transparent;
+    border: none;
+}
+
+.nav-item {
+    border-bottom: 2px solid transparent;
+}
+
+.nav-item:hover {
+    color: #ffe4c4;
+    border-bottom: 2px solid #ffe4c4;
+    transition: ease-in-out 450ms;
+}
+
+/* ############### Dashboard styles ############### */
+
+form {
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.star-input {
+  display: none;
+}
+
+.star-label {
+  color: grey;
+  font-size: 20px;
+}
+
+.star-label:hover, .star-label:hover ~ .star-label {
+  color: orange;
+}
+
+.star-input:checked ~ .star-label {
+  color: orange;
+}

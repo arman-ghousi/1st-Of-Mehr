@@ -1,0 +1,123 @@
+{% extends "store_app/layout.html" %}
+
+{% load static %}
+
+{% block title %}
+    1st of Mehr | Products
+{% endblock %}
+
+{% block style %}
+    {% static "store_app/CSS/products.css" %}
+{% endblock %}
+
+{% block script %}
+    {% static "store_app/JS/products.js" %}
+{% endblock %}
+
+
+
+{% block body %}
+
+    <!-- ***************** Categories section ***************** -->
+    <section id="categories-section">
+        <h2 class="p-3 title">Categories</h2>
+        <section id="categories-display" class="text-light d-flex flex-row justify-content-start align-items-center">
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-pencil p-2"></i></h3>
+                <p class="m-0 p-2">Pencils</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-pen p-2"></i></h3>
+                <p class="m-0 p-2">Pens</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-book p-2"></i></h3>
+                <p class="m-0 p-2">Notebooks</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-briefcase p-2"></i></h3>
+                <p class="m-0 p-2">Bags</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-brush p-2"></i></h3>
+                <p class="m-0 p-2">Brushes</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-calculator p-2"></i></h3>
+                <p class="m-0 p-2">Calculators</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-calendar3 p-2"></i></h3>
+                <p class="m-0 p-2">Calendars</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-gift p-2"></i></h3>
+                <p class="m-0 p-2">Gifting</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-lamp p-2"></i></h3>
+                <p class="m-0 p-2">Lamps</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-palette p-2"></i></h3>
+                <p class="m-0 p-2">Coloring</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-postcard p-2"></i></h3>
+                <p class="m-0 p-2">Postcards</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-postage p-2"></i></h3>
+                <p class="m-0 p-2">Postages</p>
+            </div>
+            <div class="brown d-flex flex-row justify-content-evenly align-items-center rounded m-1 p-2">
+                <h3 class="m-0"><i class="bi bi-scissors p-2"></i></h3>
+                <p class="m-0 p-2">Scissors</p>
+            </div>
+        </section>
+    </section>
+    <!-- ***************** Products section ***************** -->
+    <section id="products-section">
+        <div class="d-flex flex-row justify-content-start align-items-center">
+            <h2 class="p-3 mt-5 title">All products</h2>
+            <select class="p-2 mt-5 rounded title" name="filter" id="filter">
+                <option selected disabled>Filter by</option>
+                <option value="price">Price</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+        <section id="products-display" class="container w-75 p-5">
+            <div class="row">
+                {% for product in products %}
+                    <div class="product col-12 col-md-6 col-lg-4 col-xl-3 p-4 d-flex flex-column justify-content-between" onclick="window.location = `{% url 'product' product.id %}`">
+                        <img class="img-fluid border border-light" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <div class="product-description d-flex flex-column justify-content-center align-items-center p-1">
+                            <p class="m-0 p-1 fs-5">{{ product.name }}</p>
+                            <p class="m-0 p-1 text-secondary">{{ product.category }}</p>
+                            <p class="m-0">${{ product.price }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <nav>
+            <!-- ***************** Pagination section ***************** -->
+            <ul class="pagination justify-content-center">
+                {% if products.has_previous %}
+                    <li class="page-item"><a class="page-link title" href="?page={{ products.previous_page_number }}">Previous</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link title" href="#">Previous</a></li>
+                {% endif %}
+
+                <li class="page-item title"><a class="page-link title">Page {{ products.number }} of {{ products.paginator.num_pages }}</a></li>
+
+                {% if products.has_next %}
+                    <li class="page-item"><a class="page-link title" href="?page={{ products.next_page_number }}">Next</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link title" href="#">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </section>
+
+{% endblock %}
