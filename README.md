@@ -39,7 +39,7 @@ In this file there are multiple models such as Product to store product informat
 
 #### urls.py
 
-This python file has all the routes for the application, each of which are for a specific page.
+This python file has all the routes for the application, each of which are for a specific page .
 
 #### views.py
 
