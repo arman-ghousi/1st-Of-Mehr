@@ -1,7 +1,7 @@
 # 1st Of Mehr
 
 1st of Mehr is an ecommerce project made with Django and the theme of the project is about office supplies.
-It does not hold checkout as it is for demonstrational purposes . 
+It does not hold checkout as it is for demonstrational Purposes . 
 
 ## How to use
 
